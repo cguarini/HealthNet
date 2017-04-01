@@ -1,0 +1,132 @@
+{% load staticfiles %}
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HealthNet</title>
+    <!-- Core CSS - Include with every page -->
+    <!-- <link href="{% static 'css/bootstrap.min.css' %}" rel="stylesheet"> -->
+    <link rel="stylesheet" href="{% static 'html5up/assets/css/main.css' %}"/>
+    <link rel="stylesheet" href="{% static 'css/grayscale.css' %}"/>
+    <link rel="stylesheet" href="{% static 'fontawesome/css/font-awesome.min.css' %}"/>
+    <link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}">
+</head>
+<body>
+<style>
+    .modal-scrollbar-measure {
+        overflow: hidden;
+    }
+
+    body.modal-open {
+        overflow: visible;
+    }
+
+    .modal {
+        margin-left: 17px;
+    }
+</style>
+<div id="page-wrapper">
+
+    <!-- Header -->
+    <div id="header-wrapper">
+        <header id="header" class="container">
+            <div class="row">
+                <div class="12u">
+                    <div>
+                        <br>
+                        <br>
+                        <a id="logo" href="/"><img src="{% static "img/HN.png" %}" alt="HealthNet"
+                                                   style="width:250px;height:100px;"></a>
+                    </div>
+                    <!-- Nav -->
+                    <nav id="nav">
+                        <a href="/login">
+                            <i class="fa fa-sign-in fa-fw" aria-hidden="true"></i>&nbsp;Sign In</a>
+                        <a href="/accounts/register">
+                            <i class="fa fa-user-plus fa-fw" aria-hidden="true"></i>&nbsp;Register</a>
+                        <a href={% url 'contact' %}>
+                            <i class="fa fa-phone fa-fw" aria-hidden="true"></i>&nbsp;Contact</a>
+                    </nav>
+
+                </div>
+            </div>
+        </header>
+    </div>
+
+    <!-- Copyright -->
+
+</div>
+{% block content %}
+{% endblock %}
+{% block extraContent %}
+{% endblock %}
+
+
+<!-- Core Scripts - Include with every page -->
+<script src="{% static 'js/jquery.min.js' %}"></script>
+<script src="{% static 'js/bootstrap.min.js' %}"></script>
+{% block javascript %}
+{% endblock %}
+<div id="footer-wrapper">
+    <footer id="footer" class="container">
+        <blockquote class="blockquote-reverse">
+            <h4>"I'd be lying ... if I ... said ... I didn't love ... [HealthNet]"</h4>
+            <h5>Bill Gates, Multiple Instances</h5>
+        </blockquote>
+        <div class="row">
+            <div class="8u 12u(mobile)">
+
+                <!-- Links -->
+                <section>
+                    <h2>Links to Important Stuff</h2>
+                    <div>
+                        <div class="row">
+                            <div class="3u 12u(mobile)">
+                                <ul class="link-list last-child">
+                                    <li><a href={% url 'terms' %}>Terms and Conditions</a></li>
+                                    <li><a href={% url 'contact' %}>Contact Us</a></li>
+                                    <li><a href={% url 'reporterror' %}>Report an Error</a></li>
+                                    <li><a href={% url 'feedback' %}>Give Feedback</a></li>
+                                </ul>
+                            </div>
+                            <div class="3u 12u(mobile)">
+                            </div>
+                            <div class="3u 12u(mobile)">
+                            </div>
+                            <div class="3u 12u(mobile)">
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+            </div>
+            <div class="4u 12u(mobile)">
+
+                <!-- Blurb -->
+                <section>
+                    <h2>HealthNet Release 2</h2>
+                    <p>
+                        This project was proudly produced by Christian Kobb, Michael Lehning, and Chris Guarini
+                        for SWEN-261 in the Fall 2016 Semester.
+                    </p>
+                </section>
+
+            </div>
+        </div>
+    </footer>
+</div>
+<div id="copyright">
+    &copy; ChiMiChanGa. All rights reserved. | Design: <a href="http://html5up.net">HTML5 UP</a>
+</div>
+
+<script src="{% static 'html5up/assets/js/jquery.min.js' %}"></script>
+<script src="{% static 'html5up/assets/js/skel.min.js' %}"></script>
+<script src="{% static 'html5up/assets/js/skel-viewport.min.js' %}"></script>
+<script src="{% static 'html5up/assets/js/util.js' %}"></script>
+<!--[if lte IE 8]><script src="assets/js/ie/respond.min.js"></script><![endif]-->
+<script src="{% static 'html5up/assets/js/main.js' %}"></script>
+<script src="{% static 'js/bootstrap.js' %}"></script>
+
+</body>
+</html>

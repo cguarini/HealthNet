@@ -1,0 +1,57 @@
+{% extends 'users/base.html' %}
+{% block specialty %}
+    <div id="content-wrapper">
+        <div id ="content">
+            <div class="container">
+                <div class="row">
+                    <div class="3u 12u(mobile)"></div>
+                    <div class="5u 12u(mobile)" align="left">
+                        <header>
+                            <h1>{{ name }}</h1>
+                        </header>
+                    </div>
+                    <div class="3u 12u(mobile)" align="right">
+                        <a class="btn btn-success" href="{% url 'transfer' hospital.pk number %}" style="color:white">
+                           Transfer {{ name }}
+                        </a>
+                    </div>
+                </div>
+
+                {% if users %}
+                    <div class="8u 12u(mobile)">
+                            <div class="header">
+                                <table class="table table-striped table-hover ">
+                                <tr>
+                                    <th>{{ name }}</th>
+                                    <th>Username</th>
+
+                                </tr>
+                                </table>
+                            </div>
+                            <style>
+                                .body {
+                                    height: 300px;
+                                    overflow: auto
+                                }
+                            </style>
+                            <div class="body">
+                            <table class="table table-striped table-hover ">
+                                {% for obj in users %}
+                                    <tr>
+                                        <td> {{ obj.first_name }} {{ obj.last_name }}</td>
+                                        <td> {{ obj.username }}</td>
+                                    </tr>
+                                {% endfor %}
+                            </table>
+                            </div>
+                    </div>
+                {% else %}
+                    <div class="8u 12u(mobile)">
+                    <h3>Hospital has no {{ name }}</h3>
+                    </div>
+                {% endif %}
+                </div>
+                            </div>
+        </div>
+    </div>
+{% endblock %}

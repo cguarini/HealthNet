@@ -1,0 +1,41 @@
+{% extends 'users/base.html' %}
+{% block extraContent %}
+    <div id="content-wrapper">
+        <div id="content">
+            <div class="container">
+                <div class="row">
+                    <div class="4u 12u(mobile)"></div>
+                    <div class="4u 12u(mobile)" align="center">
+                        <section>
+                            <h3>
+                                {{ hospital.Name }}
+                            </h3>
+
+                            <button type="button" class="btn btn-success"
+                                    onclick="location.href= '{% url 'viewPatients' hospital.pk %}'">View Hospital
+                                Patients
+                            </button>
+                            <br><br>
+
+                            <button type="button" class="btn btn-success"
+                                    onclick="location.href= '{% url 'viewDoctors' hospital.pk %}'">View Hospital
+                                Doctors
+                            </button>
+                            <br><br>
+                            <button type="button" class="btn btn-success"
+                                    onclick="location.href= '{% url 'viewNurses' hospital.pk %}'">View Hospital
+                                Nurses
+                            </button>
+                            <br><br>
+                            <button type="button" class="btn btn-success"
+                                    onclick="location.href= '{% url 'viewSecretaries' hospital.pk %}'">View Hospital
+                                Secretaries
+                            </button>
+
+                        </section>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}

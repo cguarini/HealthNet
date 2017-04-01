@@ -1,0 +1,65 @@
+{% extends 'users/base.html' %}
+{% block content %}
+    {% if form.errors %}
+
+        <div class="alert alert-danger" role="alert">This username does not match any know patients.</div>
+    {% endif %}
+    <div id="content-wrapper">
+        <div id="content">
+            <div class="container">
+                <div class="row">
+                    <div class="4u 12u(mobile)">
+                        <section>
+                            <header>
+                                <h3>Add a Patient</h3>
+                            </header>
+                            <form action="/tools/addToPatients/" method="post">{% csrf_token %}
+                                <div class="input-group margin-bottom-xs">
+                                    <span class="input-group-addon"><i class="fa fa-user fa-lg fa-fw"></i></span>
+                                    {{ form.patient }}
+                                </div>
+                                </br>
+                                <div align="right">
+                                    <button type="submit" class="btn btn-success">Add</button>
+                                </div>
+                            </form>
+                        </section>
+                    </div>
+                    <div class="8u 12u(mobile)">
+                        <section>
+                            <div align="center">
+                                <h2>Patient Directory</h2>
+                            </div>
+                            <div class="header">
+                                <table class="table table-striped table-hover ">
+                                    <tr>
+                                        <th>Patient</th>
+                                        <th>Username</th>
+                                    </tr>
+                                </table>
+                            </div>
+                            <style>
+                                .body {
+                                    height: 300px;
+                                    overflow: auto
+                                }
+                            </style>
+                            <div class="body">
+                                <table class="table table-striped table-hover ">
+                                    {% for pat in patients %}
+                                        <tr>
+                                            <td><a style="font-size: 20px; color:black">
+                                                {{ pat.last_name }}, {{ pat.first_name }} </a></td>
+                                            <td><a style="font-size: 20px; color:black">
+                                                {{ pat.username }} </a></td>
+                                        </tr>
+                                    {% endfor %}
+                                </table>
+                            </div>
+                        </section>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}

@@ -1,0 +1,85 @@
+{% extends 'users/base.html' %}
+{% block content %}
+    <div id="content-wrapper">
+        <div id="content">
+            {% if errors %}
+                <div class="alert alert-danger" role="alert">Doctor request failed. Keep in mind, you may only request a doctor in your hospital. Please select a doctor from the list.
+                </div>
+            {% endif %}
+            <div class="container">
+                <div class="row">
+                    <div class="4u 12u(mobile)">
+                        <section>
+                            <header>
+                                <h3>Request a Doctor</h3>
+                            </header>
+                            <form method="post">{% csrf_token %}
+                                <h5>Doctor:</h5>
+                                <div class="input-group margin-bottom-xs">
+                                    <span class="input-group-addon"><i class="fa fa-user-md fa-lg fa-fw"></i></span>
+                                    {{ form.doctor }}
+                                </div>
+                                <div>
+                                    {% if form.doctor.errors %}
+                                        {% for error in form.doctor.errors %}
+                                            <p class="text-danger">{{ error }}</p>
+                                        {% endfor %}
+                                    {% endif %}
+                                </div>
+                                <h5>Reason:</h5>
+                                <div class="input-group margin-bottom-xs">
+                                    <span class="input-group-addon"><i class="fa fa-server fa-lg fa-fw"></i></span>
+                                    {{ form.reason }}
+                                </div>
+                                <div>
+                                    {% if form.reason.errors %}
+                                        {% for error in form.reason.errors %}
+                                            <p class="text-danger">{{ error }}</p>
+                                        {% endfor %}
+                                    {% endif %}
+                                </div>
+                                <br>
+                                <div align="right">
+                                    <button type="submit" class="btn btn-success">Request</button>
+                                </div>
+                            </form>
+                        </section>
+                    </div>
+                    <div class="8u 12u(mobile)">
+                        <section>
+                            <div align="center">
+                                <h2>Doctor Directory</h2>
+                            </div>
+                            <div class="header">
+                                <table class="table table-striped table-hover ">
+                                    <tr>
+                                        <th>Doctor:</th>
+                                        <th>Username:</th>
+                                    </tr>
+                                </table>
+                            </div>
+                            <style>
+                                .body {
+                                    height: 300px;
+                                    overflow: auto
+                                }
+                            </style>
+                            <div class="body">
+                                <table class="table table-striped table-hover ">
+                                    {% for doc in doctors %}
+                                        <tr>
+                                            <td><a style="font-size: 20px; color:black">
+                                                {{ doc.last_name }}, {{ doc.first_name }} </a></td>
+                                            <td><a style="font-size: 20px; color:black">
+                                                {{ doc.username }} </a></td>
+                                        </tr>
+                                    {% endfor %}
+                                </table>
+                            </div>
+                        </section>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}

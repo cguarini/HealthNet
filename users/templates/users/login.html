@@ -1,0 +1,84 @@
+{% extends 'users/base_register.html' %}
+
+
+{% block content %}
+    {% if form.errors %}
+
+        <div class="alert alert-danger" role="alert">Your username and password didn't match. Please try again.</div>
+    {% endif %}
+
+    {% if next %}
+        {% if user.is_authenticated %}
+
+            <div class="alert alert-danger" role="alert">Your account doesn't have access to this page. To proceed,
+                please login with an account that has access.
+            </div>
+        {% else %}
+
+            <div class="alert alert-danger" role="alert">Please login to see this page.</div>
+        {% endif %}
+    {% endif %}
+    <div id="content-wrapper">
+        <div id="content">
+            <div class="container">
+                <div class="row">
+                    <div class="4u 12u(mobile)"></div>
+                    <div class="4u 12u(mobile)">
+                        <div class="login-panel panel panel-default">
+                            <div class="panel-heading">
+                                <h3 class="panel-title">Please Sign In</h3>
+                            </div>
+                            <div class="panel-body">
+                                <form method="post"
+                                      action="{% url 'django.contrib.auth.views.login' %}">{% csrf_token %}
+                                    <p class="bs-component">
+                                    <table>
+                                        <tr>
+                                            <td>{{ form.username.label_tag }} </td>
+                                            <td>{{ form.username }}</td>
+                                        </tr>
+                                        <tr>
+                                            <td>{{ form.password.label_tag }} </td>
+                                            <td>{{ form.password }}</td>
+                                        </tr>
+                                    </table>
+                                    </p>
+                                    <p class="bs-component">
+                                    <center>
+                                        <input class="btn btn-success btn-sm" type="submit" value="Login"/>
+                                    </center>
+                                    </p>
+                                    <input type="hidden" name="next" value="{{ next }}"/>
+                                </form>
+                            </div>
+                        </div>
+                        <!-- Quick Login Links -->
+                        <div align = "center">
+                            <a href={% url 'patient' %}>Login Patient</a>
+                            <br>
+                            <a href={% url 'doctor' %}>Login Doctor</a>
+                            <br>
+                            <a href={% url 'nurse' %}>Login Nurse</a>
+                            <br>
+                            <a href={% url 'secretaryview' %}>Login Secretary</a>
+                            <br>
+                            <a href={% url 'adminview' %}>Login Administrator</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+{% endblock %}
+
+{% block javascript %}
+
+
+    <script>
+        {% if not user.is_authenticated %}
+            $("ul.nav.navbar-nav.navbar-right").css("display", "none");
+        {% endif %}
+    </script>
+
+{% endblock %}

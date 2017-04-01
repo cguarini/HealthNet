@@ -1,0 +1,21 @@
+{% extends 'users/base.html' %}
+{% block content %}
+    <div id="content-wrapper">
+        <div id ="content">
+            <div class="container", align="center">
+                <header>
+                    <h1>Messaging Center</h1>
+                </header>
+                <div class="row">
+                    <div class = "3u 12u(mobile)">
+                            <div class="list-group" align="left">
+                                <a href="{% url 'Inbox' %}" class="list-group-item"><p style="color: black">Inbox</p></a>
+                                <a href="{% url 'OutBox' %}" class="list-group-item"><p style="color: black">Outbox</p></a>
+                                <!--<a href="{% url 'SendMessage' %}" class="btn btn-success"><p style="color:white">Compose</p></a> -->
+                            </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}

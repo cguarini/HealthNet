@@ -1,0 +1,45 @@
+{% extends 'users/base.html' %}
+{% block extraContent %}
+    <div id="content-wrapper">
+        <div id ="content">
+            <div class="container">
+                <div class="row">
+                    <div class="4u 12u(mobile)"></div>
+                    <div class="4u 12u(mobile)">
+                        <section>
+                            <style>
+                                    #parent{
+                                        display: flex;
+                                    }
+                                    #narrow {
+                                        width: 50%;
+                                    }
+                                    #wide{
+                                        flex: 1;
+                                    }
+                                </style>
+                            {% for obj in messages %}
+                                <h3>Date Sent:</h3>
+                                <a class="form-control" style="color:black" disabled="">{{ obj.timeSent }}</a>
+                                <div id="parent">
+                                    <div id="narrow">
+                                        <h3>From:</h3>
+                                        <a class="form-control" style="color:black" disabled="">{{ obj.sender }}</a>
+                                    </div>
+                                    <div id="wide">
+                                        <h3>To:</h3>
+                                        <a class="form-control" style="color:black" disabled="">{{ obj.reciever }}</a>
+                                        </br>
+                                    </div>
+                                </div>
+
+                                <h3>Message:</h3>
+                                <textarea class="form-control" rows="4" disabled="">{{ obj.message }}</textarea>
+                            {% endfor %}
+                        </section>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}

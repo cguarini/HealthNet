@@ -1,0 +1,222 @@
+{% extends 'users/base.html' %}
+{% block extraContent %}
+    <form method="post">{% csrf_token %}
+        <div id="content-wrapper">
+            <div id="content">
+                <div class="container">
+                    <header>
+                        <h1>Administrator Registration</h1>
+                    </header>
+                    <div class="row">
+                        <div class="4u 12u(mobile)">
+                            <section>
+                                <h5>Username:</h5>
+                                <div class="input-group margin-bottom-xs">
+                                    <span class="input-group-addon"><i class="fa fa-user-o fa-lg fa-fw"></i></span>
+                                    {{ form.username }}
+                                </div>
+                                <div>
+                                    {% if form.username.errors %}
+                                        {% for error in form.username.errors %}
+                                            <p class="text-danger">{{ error }}</p>
+                                        {% endfor %}
+                                    {% endif %}
+                                </div>
+                                <h5>Password:</h5>
+                                <div class="input-group margin-bottom-xs">
+                                    <span class="input-group-addon"><i class="fa fa-lock fa-lg fa-fw"></i></span>
+                                    {{ form.password1 }}
+                                </div>
+                                <div>
+                                    {% if form.password1.errors %}
+                                        {% for error in form.password1.errors %}
+                                            <p class="text-danger">{{ error }}</p>
+                                        {% endfor %}
+                                    {% endif %}
+                                </div>
+                                <h5>Reenter Password:</h5>
+                                <div class="input-group margin-bottom-xs">
+                                    <span class="input-group-addon"><i class="fa fa-lock fa-lg fa-fw"></i></span>
+                                    {{ form.password2 }}
+                                </div>
+                                <div>
+                                    {% if form.password2.errors %}
+                                        {% for error in form.password2.errors %}
+                                            <p class="text-danger">{{ error }}</p>
+                                        {% endfor %}
+                                    {% endif %}
+                                </div>
+                                <h5>Email Address:</h5>
+                                <div class="input-group margin-bottom-xs">
+                                    <span class="input-group-addon"><i class="fa fa-envelope-o fa-lg fa-fw"></i></span>
+                                    {{ form.email }}
+                                </div>
+                                <div>
+                                    {% if form.email.errors %}
+                                        {% for error in form.email.errors %}
+                                            <p class="text-danger">{{ error }}</p>
+                                        {% endfor %}
+                                    {% endif %}
+                                </div>
+                                <h5>First Name:</h5>
+                                <div class="input-group margin-bottom-xs">
+                                    <span class="input-group-addon"><i
+                                            class="fa fa-user-circle-o fa-lg fa-fw"></i></span>
+                                    {{ form.first_name }}
+                                </div>
+                                <div>
+                                    {% if form.first_name.errors %}
+                                        {% for error in form.first_name.errors %}
+                                            <p class="text-danger">{{ error }}</p>
+                                        {% endfor %}
+                                    {% endif %}
+                                </div>
+                                <h5>Last Name:</h5>
+                                <div class="input-group margin-bottom-xs">
+                                    <span class="input-group-addon"><i
+                                            class="fa fa-user-circle-o fa-lg fa-fw"></i></span>
+                                    {{ form.last_name }}
+                                </div>
+                                <div>
+                                    {% if form.last_name.errors %}
+                                        {% for error in form.last_name.errors %}
+                                            <p class="text-danger">{{ error }}</p>
+                                        {% endfor %}
+                                    {% endif %}
+                                </div>
+                                <h5>Date of Birth:</h5>
+                                <div class="input-group margin-bottom-xs">
+                                    <span class="input-group-addon"><i class="fa fa-calendar fa-lg fa-fw"></i></span>
+                                    {{ form.dateOfBirth }}
+                                </div>
+                                <div>
+                                    {% if form.dateOfBirth.errors %}
+                                        {% for error in form.dateOfBirth.errors %}
+                                            <p class="text-danger">{{ error }}</p>
+                                        {% endfor %}
+                                    {% endif %}
+                                </div>
+                            </section>
+                        </div>
+                        <div class="4u 12u(mobile)">
+                            <section>
+                                <h5>Phone Number:</h5>
+                                <div class="input-group margin-bottom-xs">
+                                    <span class="input-group-addon"><i class="fa fa-phone fa-lg fa-fw"></i></span>
+                                    {{ form.PhoneNumber }}
+                                </div>
+                                <div>
+                                    {% if form.PhoneNumber.errors %}
+                                        {% for error in form.PhoneNumber.errors %}
+                                            <p class="text-danger">{{ error }}</p>
+                                        {% endfor %}
+                                    {% endif %}
+                                </div>
+                                <h5>Address:</h5>
+                                <div class="input-group margin-bottom-xs">
+                                    <span class="input-group-addon"><i class="fa fa-home fa-lg fa-fw"></i></span>
+                                    {{ form.Address }}
+                                </div>
+                                <div>
+                                    {% if form.Address.errors %}
+                                        {% for error in form.Address.errors %}
+                                            <p class="text-danger">{{ error }}</p>
+                                        {% endfor %}
+                                    {% endif %}
+                                </div>
+                                <h5>State:</h5>
+                                <div class="input-group margin-bottom-xs">
+                                    <span class="input-group-addon"><i class="fa fa-home fa-lg fa-fw"></i></span>
+                                    {{ form.State }}
+                                </div>
+                                <div>
+                                    {% if form.State.errors %}
+                                        {% for error in form.State.errors %}
+                                            <p class="text-danger">{{ error }}</p>
+                                        {% endfor %}
+                                    {% endif %}
+                                </div>
+                                <h5>City:</h5>
+                                <div class="input-group margin-bottom-xs">
+                                    <span class="input-group-addon"><i class="fa fa-home fa-lg fa-fw"></i></span>
+                                    {{ form.City }}
+                                </div>
+                                <div>
+                                    {% if form.City.errors %}
+                                        {% for error in form.City.errors %}
+                                            <p class="text-danger">{{ error }}</p>
+                                        {% endfor %}
+                                    {% endif %}
+                                </div>
+                                <h5>Zip Code:</h5>
+                                <div class="input-group margin-bottom-xs">
+                                    <span class="input-group-addon"><i class="fa fa-home fa-lg fa-fw"></i></span>
+                                    {{ form.ZipCode }}
+                                </div>
+                                <div>
+                                    {% if form.ZipCode.errors %}
+                                        {% for error in form.ZipCode.errors %}
+                                            <p class="text-danger">{{ error }}</p>
+                                        {% endfor %}
+                                    {% endif %}
+                                </div>
+                            </section>
+                        </div>
+                        <div class="4u 12u(mobile)">
+                            <section>
+                                <h5>Emergency Contact First Name:</h5>
+                                <div class="input-group margin-bottom-xs">
+                                    <span class="input-group-addon"><i
+                                            class="fa fa-user-circle-o fa-lg fa-fw"></i></span>
+                                    {{ form.ECFirstName }}
+                                </div>
+                                <div>
+                                    {% if form.ECFirstName.errors %}
+                                        {% for error in form.ECFirstName.errors %}
+                                            <p class="text-danger">{{ error }}</p>
+                                        {% endfor %}
+                                    {% endif %}
+                                </div>
+                                <h5>Emergency Contact Last Name:</h5>
+                                <div class="input-group margin-bottom-xs">
+                                    <span class="input-group-addon"><i
+                                            class="fa fa-user-circle-o fa-lg fa-fw"></i></span>
+                                    {{ form.ECLastName }}
+                                </div>
+                                <div>
+                                    {% if form.ECLastName.errors %}
+                                        {% for error in form.ECLastName.errors %}
+                                            <p class="text-danger">{{ error }}</p>
+                                        {% endfor %}
+                                    {% endif %}
+                                </div>
+                                <h5>Emergency Contact Phone Number:</h5>
+                                <div class="input-group margin-bottom-xs">
+                                    <span class="input-group-addon"><i class="fa fa-phone fa-lg fa-fw"></i></span>
+                                    {{ form.ECPhoneNumber }}
+                                </div>
+                                <div>
+                                    {% if form.ECPhoneNumber.errors %}
+                                        {% for error in form.ECPhoneNumber.errors %}
+                                            <p class="text-danger">{{ error }}</p>
+                                        {% endfor %}
+                                    {% endif %}
+                                </div>
+
+                                <div align="right">
+                                    <div class="form-actions">
+                                        <button type="submit" class="btn btn-success">Submit</button>
+                                    </div>
+                                </div>
+                            </section>
+                        </div>
+                    </div>
+                    </br>
+                </div>
+                <p><br/></p>
+            </div>
+        </div>
+
+    </form>
+
+{% endblock %}

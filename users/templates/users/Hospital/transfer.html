@@ -1,0 +1,32 @@
+{% extends 'users/Hospital/viewHospital.html' %}
+{% block specialty %}
+    {% if form.errors %}
+
+<div class="alert alert-danger" role="alert">This username does not match any know users.</div>
+{% endif %}
+    <div id="content-wrapper">
+          <div id ="content">
+              <div class = "container">
+                  <div class="row">
+                      <div class="4u 12u(mobile)">
+                          <section>
+                              <header>
+                                  <h3>Transfer a user</h3>
+                              </header>
+    <form  method="post">{% csrf_token %}
+        <div class="input-group margin-bottom-xs">
+                                      <span class="input-group-addon"><i class="fa fa-user fa-lg fa-fw"></i></span>
+                                      {{ form.username }}
+                                  </div>
+                                    </br>
+                                    <div align="right">
+                            <button type="submit" class="btn btn-success" >Transfer</button>
+                                        </div>
+                                    </form>
+                              </section>
+                          </div>
+                      </div>
+                  </div>
+              </div>
+    </div>
+ {% endblock %}

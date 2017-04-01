@@ -1,0 +1,46 @@
+{% extends "users/baseProfile.html" %}
+{% block extraContent %}
+    <h3>Patient Information</h3>
+    <div class="panel panel-default">
+  <div class="panel-heading">
+    <h3 class="panel-title">Prescriptions</h3>
+  </div>
+  <div class="panel-body">
+    {{ user.enduser.Prescriptions }}
+  </div>
+</div>
+    <h3>Insurance Information</h3>
+    <div class="panel panel-default">
+  <div class="panel-heading">
+    <h3 class="panel-title">Provider</h3>
+  </div>
+  <div class="panel-body">
+    {{ user.enduser.ProviderID }}
+  </div>
+</div>
+    <div class="panel panel-default">
+  <div class="panel-heading">
+    <h3 class="panel-title">Policy Type</h3>
+  </div>
+  <div class="panel-body">
+    {{ user.enduser.PolicyType }}
+  </div>
+</div>
+    <div class="panel panel-default">
+  <div class="panel-heading">
+    <h3 class="panel-title">Policy Number</h3>
+  </div>
+  <div class="panel-body">
+    {{ user.enduser.PolicyNumber }}
+  </div>
+</div>
+    <h3> Medical Records</h3>
+    <div class="panel panel-default">
+  <div class="panel-heading">
+    <h3 class="panel-title">Records</h3>
+  </div>
+  <div class="panel-body">
+    {{ user.enduser.records }}
+  </div>
+</div>
+{% endblock %}

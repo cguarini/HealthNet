@@ -1,0 +1,63 @@
+{% extends 'users/base.html' %}
+{% block content %}
+    <div id="content-wrapper">
+        <div id="content">
+            <div class="container">
+                <div class="row">
+                    <div class="3u 12u(mobile)"></div>
+                    <div class="5u 12u(mobile)">
+                        <header>
+                            <h1>Tests</h1>
+                        </header>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="3u 12u(mobile)">
+                        <div class="list-group" align="left">
+                            <a href="{% url 'myTests' %}" class="list-group-item" style="color:black">
+                                <i class="fa fa-stethoscope fa-fw" aria-hidden="true"></i>&nbsp; My Tests</a>
+                            <a href="{% url 'makeTest' %}" class="list-group-item" style="color:black">
+                                <i class="fa fa-plus fa-fw" aria-hidden="true"></i>&nbsp; New Test</a>
+                        </div>
+                    </div>
+                    <div class="8u 12u(mobile)">
+                        <section>
+                            <form method="post" enctype="multipart/form-data">{% csrf_token %}
+                                <h5>Doctor Username:</h5>
+                                <div class="input-group margin-bottom-xs">
+                                    <span class="input-group-addon"><i class="fa fa-user-o fa-lg fa-fw"></i></span>
+                                    {{ form.doctor }}
+                                </div>
+                                <h5>Patient Username:</h5>
+                                <div class="input-group margin-bottom-xs">
+                                    <span class="input-group-addon"><i class="fa fa-user-o fa-lg fa-fw"></i></span>
+                                    {{ form.patient }}
+                                </div>
+                                <h5>Pending:</h5>
+                                {{ form.pending }}
+                                <h5>Information:</h5>
+                                <div class="input-group margin-bottom-xs">
+                                    <span class="input-group-addon"><i class="fa fa-info fa-lg fa-fw"></i></span>
+                                    {{ form.information }}
+                                </div>
+                                <h5>Results:</h5>
+                                <div class="input-group margin-bottom-xs">
+                                    <span class="input-group-addon"><i class="fa fa-list fa-lg fa-fw"></i></span>
+                                    {{ form.results }}
+                                </div>
+                                <h5>File:</h5>
+                                {{ form.file }}
+                                <br>
+                                <div align="right">
+                                    <div class="form-actions">
+                                        <button type="submit" class="btn btn-success">Submit</button>
+                                    </div>
+                                </div>
+                            </form>
+                        </section>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}

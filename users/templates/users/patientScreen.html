@@ -1,0 +1,15 @@
+{% extends 'users/base.html' %}
+{% block content %}
+    <div class="jumbotron">
+    <h3>
+        Hospital Doctors:
+    </h3>
+    {% for doc in doctors %}
+       - {{ doc.username }} : {{ doc.first_name }} {{ doc.last_name }}<br>
+    {% endfor %}
+    <br>
+    <button class="btn btn-default" name="Request Doctor" onclick="location.href='{% url 'request' %}'">Request Doctor</button>
+    <button type="button" class="btn btn-default" onclick="location.href= '{% url 'viewPerscriptions' %}'">My Perscriptions</button>
+    <button type="button" class="btn btn-default" onclick="location.href= '{% url 'myTests' %}'">My Tests</button>
+    </div>
+{% endblock %}

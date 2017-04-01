@@ -1,0 +1,31 @@
+{% extends 'users/base.html' %}
+{% block content %}
+    <div id="content wrapper">
+        <div id="content">
+            <div class="container">
+                <div class="row">
+                    <div class="12u" align="center">
+                        <section>
+                            <style>
+                                .body {
+                                    height: 450px;
+                                    overflow: auto
+                                }
+                            </style>
+                            <div class="body">
+                                <table>
+                                    {% for event in loop %}
+                                        <tr>
+                                            <td><a style="font-size: 20px">
+                                                {{ event }} </a></td>
+                                        </tr>
+                                    {% endfor %}
+                                </table>
+                            </div>
+                        </section>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}

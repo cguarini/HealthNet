@@ -1,0 +1,69 @@
+{% extends 'users/base.html' %}
+{% block content %}
+    <div id="content-wrapper">
+    <div id="content">
+     <div class="container">
+        <div class="row">
+            <div class="3u 12u(mobile)"></div>
+            <div class="5u 19u(mobile)" align="left">
+                <header>
+                    <h1>Prescriptions</h1>
+                </header>
+            </div>
+        </div>
+        <div class="row">
+            <div class = "3u 12u(mobile)">
+                {% if user.enduser.isDoctor %}
+                <div class="list-group" align="left">
+                    <a href="{% url 'perscribe' %}" class="list-group-item" style="color:black">
+                        <i class="fa fa-plus fa-fw" aria-hidden="true"></i>&nbsp;Prescribe</a>
+                    <a href="{% url 'perscriptions' %}" class="list-group-item" style="color:black">
+                        <i class="fa fa-medkit fa-fw" aria-hidden="true"></i>&nbsp;Your Prescriptions</a>
+                    <!--<a href="{% url 'SendMessage' %}" class="btn btn-success"><p style="color:white">Compose</p></a> -->
+                </div>
+                {% endif %}
+            </div>
+            <div class="8u 12u(mobile)">
+            {% if perscriptions %}
+                <div class="header">
+                    <table class="table table-striped table-hover ">
+                    <tr>
+                        {% if user.enduser.isPatient %}
+                            <th>Doctor</th>
+                        {% else %}
+                        <th>Patient</th>
+                            {% endif %}
+                        <th>Prescription</th>
+                    </tr>
+                    </table>
+                </div>
+                    <style>
+                        .body {
+                            height: 400px;
+                            overflow: auto
+                        }
+                    </style>
+                    <div class="body">
+                    <table class="table table-striped table-hover ">
+                       {% for obj in perscriptions %}
+                        <tr>
+                            {% if user.enduser.isPatient %}
+                            <td><a style="font-size: 20px;" href="{% url 'viewPerscription' obj.pk %}">  {{ obj.doctor }} </a></td>
+                            {% else %}
+                            <td><a style="font-size: 20px;" href="{% url 'viewPerscription' obj.pk %}">  {{ obj.patient }} </a></td>
+                            {% endif %}
+                            <td><a style="font-size: 20px;" href="{% url 'viewPerscription' obj.pk %}">{{ obj.perscription }}</a>
+                            </td>
+                        </tr>
+                        {% endfor %}
+                    </table>
+                    </div>
+            {% else %}
+                <h3>You have no prescriptions.</h3>
+            {% endif %}
+            </div>
+        </div>
+    </div>
+    </div>
+    </div>
+{% endblock %}

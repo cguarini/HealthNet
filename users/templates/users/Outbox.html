@@ -1,0 +1,154 @@
+{% extends 'users/base.html' %}
+{% block content %}
+    <div id="content-wrapper">
+        <div id ="content">
+            <div class="container">
+                <div class="row">
+                    <div class="3u 12u(mobile)"></div>
+                    <div class="5u 19u(mobile)" align="left">
+                        <header>
+                            <h1>Outbox</h1>
+                        </header>
+                    </div>
+                    <div class="3u 12u(mobile)" align="right">
+                        <a class="btn btn-default" href={% url 'SendMessage' %} style="color:white">
+                            <i class="fa fa-envelope-o fa-lg" style="color:white"></i> Compose
+                        </a>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class = "3u 12u(mobile)">
+                            <div class="list-group" align="left">
+                                <a href="{% url 'Inbox' %}" class="list-group-item" style="color:black">
+                                    <i class="fa fa-inbox fa-fw" aria-hidden="true"></i>&nbsp; Inbox</a>
+                                <a href="{% url 'OutBox' %}" class="list-group-item" style="color:black">
+                                    <i class="fa fa-send-o fa-fw" aria-hidden="true"></i>&nbsp;Outbox</a>
+                                <!--<a href="{% url 'SendMessage' %}" class="btn btn-success"><p style="color:white">Compose</p></a> -->
+                            </div>
+                    </div>
+                {% if messages %}
+                    <div class="8u 12u(mobile)">
+                        <div class="header">
+                                <table class="table table-striped table-hover ">
+                                <tr>
+                                    <th>Date Sent</th>
+                                    <th>Receiver</th>
+                                    <th>Subject</th>
+                                </tr>
+                                </table>
+                            </div>
+                            <style>
+                                .body {
+                                    height: 500px;
+                                    overflow: auto
+                                }
+                            </style>
+                            <div class="body">
+                            <table class="table table-striped table-hover ">
+                                {% for obj in messages %}
+                                    <tr>
+                                        <td> <a style="font-size: 20px" href="{% url 'viewMessage' obj.pk %}">
+                                            {{ obj.timeSent }} </a></td>
+                                        <td> <a style="font-size: 20px" href="{% url 'viewMessage' obj.pk %}">
+                                            {{ obj.reciever }} </a></td>
+                                        <td> <a style="font-size: 20px" href="{% url 'viewMessage' obj.pk %}">
+                                            {{ obj.subject }} </a></td>
+                                    </tr>
+                                {% endfor %}
+                            </table>
+                            </div>
+                    </div>
+                {% else %}
+                    <div class="8u 12u(mobile)">
+                    <h3>You have sent no messages.</h3>
+                    </div>
+                {% endif %}
+                </div>
+                <div class="modal fade" id="compose" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+                    <div class="modal-dialog" role="document">
+                        <div class="modal-content">
+                            <form  method="post">{% csrf_token %}
+                            <div class="modal-header">
+                                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                                    <h4 class="modal-title" id="myModalLabel">Compose Message</h4>
+                            </div>
+                            <div class="modal-body">
+                                <style>
+                                    #parent{
+                                        display: flex;
+                                    }
+                                    #narrow {
+                                        width: 300px;
+                                    }
+                                    #wide{
+                                        flex: 1;
+                                    }
+                                </style>
+                                <div id="parent">
+                                    <div id="narrow">
+                                        <h5>Reciever:</h5>
+                                        <div class="input-group margin-bottom-xs">
+                                            <div class="input-group margin-bottom-xs">
+                                                <span class="input-group-addon"><i class="fa fa-user-o fa-lg fa-fw"></i></span>
+                                                {{ form.reciever }}
+                                            </div>
+                                            <div>
+                                                {% if form.reciever.errors %}
+                                                    {% for error in form.reciever.errors %}
+                                                        <p class="text-danger">{{ error }}</p>
+                                                    {% endfor %}
+                                                {% endif %}
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div id="wide">
+                                        <h5>Subject: </h5>
+                                        <div class="input-group margin-bottom-xs">
+                                            <div class="input-group margin-bottom-xs">
+                                                <span class="input-group-addon"><i class="fa fa-user-o fa-lg fa-fw"></i></span>
+                                                    {{ form.subject }}
+                                            </div>
+                                            <div>
+                                                {% if form.subject.errors %}
+                                                    {% for error in form.subject.errors %}
+                                                        <p class="text-danger">{{ error }}</p>
+                                                    {% endfor %}
+                                                {% endif %}
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <br>
+
+                                <br>
+                                <h5>Message:</h5>
+                                <div class="input-group margin-bottom-xs">
+                                    <div class="input-group margin-bottom-xs">
+                                        <span class="input-group-addon"><i class="fa fa-user-o fa-lg fa-fw"></i></span>
+                                        {{ form.message }}
+                                    </div>
+                                    <div>
+                                        {% if form.message.errors %}
+                                            {% for error in form.message.errors %}
+                                                <p class="text-danger">{{ error }}</p>
+                                            {% endfor %}
+                                        {% endif %}
+                                    </div>
+                                </div>
+                                <br>
+                            </div>
+                            <div class="modal-footer">
+                                <a type="button" class="btn btn-danger" data-dismiss="modal" style="color:white">
+                                    <i class="fa fa-times fa-fw" aria-hidden="true"></i>&nbsp;Cancel</a>
+                                <a type="submit" class="btn btn-success" style="color:white">
+                                    <i class="fa fa-send fa-fw" aria-hidden="true"></i>&nbsp;Send</a>
+                                <!-- won't actually do anything until views.py is edited to send the form -->
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}

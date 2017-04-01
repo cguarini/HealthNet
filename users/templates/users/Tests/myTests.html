@@ -1,0 +1,98 @@
+{% extends 'users/base.html' %}
+{% block content %}
+    <div id="content-wrapper">
+        <div id="content">
+            <div class="container">
+                <div class="row">
+                    <div class="3u 12u(mobile)"></div>
+                    <div class="5u 12u(mobile)">
+                        <header>
+                            <h1>Tests</h1>
+                        </header>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class = "3u 12u(mobile)">
+                            <div class="list-group" align="left">
+                                <a href="{% url 'myTests' %}" class="list-group-item" style="color:black">
+                                    <i class="fa fa-stethoscope fa-fw" aria-hidden="true"></i>&nbsp; My Tests</a>
+                                {% if not patient %}
+                                <a href="{% url 'makeTest' %}" class="list-group-item" style="color:black">
+                                    <i class="fa fa-plus fa-fw" aria-hidden="true"></i>&nbsp; New Test</a>
+                                {% endif %}
+                            </div>
+                    </div>
+                    <div class="8u 12u(mobile)">
+                    <section>
+                    {% if tests %}
+                    {% if patient %}
+                        <div class="header">
+                                <table class="table table-striped table-hover ">
+                                <tr>
+                                    <th>Doctor:</th>
+                                    <th>Status:</th>
+                                </tr>
+                                </table>
+                            </div>
+                            <style>
+                                .body {
+                                    height: 100px;
+                                    overflow: auto
+                                }
+                            </style>
+                            <div class="body">
+                            <table class="table table-striped table-hover ">
+                                {% for test in tests %}
+                                    <tr>
+                                        <td> <a style="font-size: 20px" href="{% url 'viewTest' test.pk %}">
+                                            {{ test.doctor_fn }} </a></td>
+                                        {% if test.pending %}
+                                        <td> <a style="font-size: 20px" href="{% url 'viewTest' test.pk %}">PENDING</a></td>
+                                        {% else %}
+                                        <td> <a style="font-size: 20px" href="{% url 'viewTest' test.pk %}">COMPLETE</a></td>
+                                        {% endif %}
+                                    </tr>
+                                {% endfor %}
+                            </table>
+                            </div>
+                    {% else %}
+                        <div class="header">
+                                <table class="table table-striped table-hover ">
+                                <tr>
+                                    <th>Patient:</th>
+                                    <th>Status:</th>
+                                </tr>
+                                </table>
+                            </div>
+                            <style>
+                                .body {
+                                    height: 100px;
+                                    overflow: auto
+                                }
+                            </style>
+                            <div class="body">
+                            <table class="table table-striped table-hover ">
+                                {% for test in tests %}
+                                    <tr>
+                                        <td> <a style="font-size: 20px" href="{% url 'viewTest' test.pk %}">
+                                            {{ test.patient_fn }} </a></td>
+                                        {% if test.pending %}
+                                        <td> <a style="font-size: 20px" href="{% url 'viewTest' test.pk %}">PENDING</a></td>
+                                        {% else %}
+                                        <td> <a style="font-size: 20px" href="{% url 'viewTest' test.pk %}">COMPLETE</a></td>
+                                        {% endif %}
+                                    </tr>
+                                {% endfor %}
+                            </table>
+                            </div>
+                    {% endif %}
+                    {% else %}
+                        <h3>You have no tests.</h3>
+                    {% endif %}
+                    </section>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}

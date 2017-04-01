@@ -1,0 +1,51 @@
+{% extends 'users/base.html' %}
+{% block content %}
+    <div id="content-wrapper">
+        <div id="content">
+            <div class="container">
+                <div align="center">
+                    <header>
+                        <h3>Update Medical Information
+                            for {{ patient.first_name }} {{ patient.last_name }}</h3>
+                    </header>
+                </div>
+                <div class="row">
+                    <div class="4u 12u(mobile)"></div>
+                    <div class="4u 12u(mobile)">
+                        <section>
+                            <form method="post">{% csrf_token %}
+                                <h5>Insurance Provider ID:</h5>
+                                <div class="input-group margin-bottom-xs">
+                                    <span class="input-group-addon"><i class="fa fa-user-o fa-lg fa-fw"></i></span>
+                                    {{ form.ProviderID }}
+                                </div>
+                                <h5>Insurance Policy Type:</h5>
+                                <div class="input-group margin-bottom-xs">
+                                    <span class="input-group-addon"><i class="fa fa-user-o fa-lg fa-fw"></i></span>
+                                    {{ form.PolicyType }}
+                                </div>
+                                <h5>Insurance Policy Number:</h5>
+                                <div class="input-group margin-bottom-xs">
+                                    <span class="input-group-addon"><i class="fa fa-user-o fa-lg fa-fw"></i></span>
+                                    {{ form.PolicyNumber }}
+                                </div>
+                                <h5>Medical Records:</h5>
+                                <div class="input-group margin-bottom-xs">
+                                    <span class="input-group-addon"><i class="fa fa-user-o fa-lg fa-fw"></i></span>
+                                    {{ form.records }}
+                                </div>
+                                <br>
+                                <div align="right">
+                                    <div class="form-actions">
+                                        <button type="submit" class="btn btn-success">Update</button>
+                                    </div>
+                                </div>
+                            </form>
+                        </section>
+                    </div>
+                </div>
+                </section>
+            </div>
+        </div>
+    </div>
+{% endblock %}

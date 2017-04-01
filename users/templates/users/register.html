@@ -1,0 +1,43 @@
+{% extends "users/base.html" %}
+{% block content %}
+        <h4>First Name:</h4>
+        <div class="row">
+            <div class="col-sm-6 col-md-6 col-lg-6">
+                <label for="first_name" class="sr-only">First Name</label>
+                <input id="first_name" name="first_name" class="form-control" placeholder="First Name" autofocus="">
+
+            </div>
+        </div>
+        <h4>Last Name:</h4>
+        <div class="row">
+            <div class="col-sm-6 col-md-6 col-lg-6">
+                <label for="last_name" class="sr-only">Last Name</label>
+                <input id="last_name" name="last_name" class="form-control" placeholder="Last Name" autofocus="">
+            </div>
+        </div>
+        <h4>Username:</h4>
+        <div class="row">
+            <div class="col-sm-6 col-md-6 col-lg-6">
+                <label for="username" class="sr-only">Username</label>
+                <input id="username" name="username" class="form-control" placeholder="Username" autofocus="">
+            </div>
+        </div>
+        &nbsp
+        <h4>Password:</h4>
+        <div class="row">
+            <div class="col-sm-6 col-md-6 col-lg-6">
+                <label for="password" class="sr-only">Password</label>
+                <input type="password" name="password" id="password" class="form-control" placeholder="Password">
+            </div>
+        </div>
+         &nbsp
+        <h4>email:</h4>
+        <div class="row">
+            <div class="col-sm-6 col-md-6 col-lg-6">
+                <label for="email" class="sr-only">email</label>
+                <input type="email" name="email" id="email" class="form-control" placeholder="email">
+            </div>
+        </div>
+    <input type = "submit">
+
+{% endblock %}

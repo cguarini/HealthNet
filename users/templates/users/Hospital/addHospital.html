@@ -1,0 +1,53 @@
+{% extends 'users/base.html' %}
+{% block extraContent %}
+
+    <form method="post">{% csrf_token %}
+        <div id="content-wrapper">
+            <div id="content">
+                <div class="container">
+                    <div class="row">
+                        <div class="4u 12u(mobile)"></div>
+                        <div class="4u 12u(mobile)">
+                            <section>
+                                <h3>Add Hospital to Network</h3>
+                                <form class="form-horizontal" method="post">{% csrf_token %}
+                                    <h5>Name:</h5>
+                                    <div class="input-group margin-bottom-xs">
+                                        <span class="input-group-addon"><i class="fa fa-user-o fa-lg fa-fw"></i></span>
+                                        {{ form.Name }}
+                                    </div>
+                                    <div>
+                                        {% if form.Name.errors %}
+                                            {% for error in form.Name.errors %}
+                                                <p class="text-danger">{{ error }}</p>
+                                            {% endfor %}
+                                        {% endif %}
+                                    </div>
+                                    <h5>Address:</h5>
+                                    <div class="input-group margin-bottom-xs">
+                                        <span class="input-group-addon"><i class="fa fa-home fa-lg fa-fw"></i></span>
+                                        {{ form.Address }}
+                                    </div>
+                                    <div>
+                                        {% if form.Address.errors %}
+                                            {% for error in form.Address.errors %}
+                                                <p class="text-danger">{{ error }}</p>
+                                            {% endfor %}
+                                        {% endif %}
+                                    </div>
+                                    <br>
+                                    <div class="form-actions" align="right">
+                                        <button type="submit" class="btn btn-success">Submit</button>
+                                    </div>
+                                </form>
+                            </section>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+    </form>
+
+{% endblock %}

@@ -1,0 +1,41 @@
+{% extends 'users/base.html' %}
+{% block content %}
+    <div id="content-wrapper">
+        <div id="content">
+            <div class="container">
+                <div class="row">
+                    <div class="12u">
+                        <section>
+                            <h3>
+                                Debug Screen
+                            </h3>
+                            <p class="alert-danger">
+
+                                Hitting this button will populate HealthNet with randomized fake users, are you sure you
+                                wish to
+                                do
+                                that?
+
+                            </p>
+                            <table>
+                                <tbody>
+                                <tr>
+                                    <td>
+
+                                        <button type="button" class="btn btn-default"
+                                                onclick="location.href= '{% url 'populus' %}'">
+                                            Populate HealthNet
+                                        </button>
+
+
+                                    </td>
+                                </tr>
+                                </tbody>
+                            </table>
+                        </section>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}

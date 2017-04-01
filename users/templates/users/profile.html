@@ -1,0 +1,12 @@
+{% extends "users/base.html" %}
+{% block content %}
+    <div class="container">
+        <div class="row">
+            <div class="jumbotron">
+                <h1>Abstract Profile, YAY!</h1>
+                <p>Either you're a superuser, or something didn't work</p>
+                <p>{{ user.userprofile.username }}</p>
+            </div>
+        </div>
+    </div>
+{% endblock %}

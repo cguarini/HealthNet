@@ -1,0 +1,77 @@
+{% extends 'users/base.html' %}
+{% block extraContent %}
+    {% if errors %}
+        {% for error in errors %}
+            <div class="alert alert-danger" role="alert">{{ error }}</div>
+        {% endfor %}
+    {% endif %}
+    <form  method="post">{% csrf_token %}
+        <div id="content-wrapper">
+            <div id ="content">
+                <div class="container">
+                    <div class="row">
+                        <div class="3u 12u(mobile)"></div>
+                        <div class="5u 19u(mobile)" align="center">
+                        <header>
+                            <h1>Compose Message</h1>
+                        </header>
+                    </div>
+                    </div>
+                    <div class="row">
+                        <div class="3u 12u(mobile)">
+                            <div class="list-group" align="left">
+                                <a href="{% url 'Inbox' %}" class="list-group-item" style="color:black">
+                                    <i class="fa fa-inbox fa-fw" aria-hidden="true"></i>&nbsp; Inbox</a>
+                                <a href="{% url 'OutBox' %}" class="list-group-item" style="color:black">
+                                    <i class="fa fa-send-o fa-fw" aria-hidden="true"></i>&nbsp;Outbox</a>
+                                <!--<a href="{% url 'SendMessage' %}" class="btn btn-success"><p style="color:white">Compose</p></a> -->
+                            </div>
+                        </div>
+                        <div class="1u 12u(mobile)"></div>
+                        <style>
+                                    #parent{
+                                        display: flex;
+                                    }
+                                    #narrow {
+                                        width: 50%;
+                                    }
+                                    #wide{
+                                        flex: 1;
+                                    }
+                                </style>
+                        <div class="4u 12u(mobile)">
+                            <section>
+                                <div id="parent">
+                                <div id="narrow">
+                                <h5>Reciever:</h5>
+                                    <div class="input-group margin-bottom-xs">
+                                        <span class="input-group-addon"><i class="fa fa-user-o fa-lg fa-fw"></i></span>
+                                        {{ form.reciever }}
+                                    </div>
+                                </div>
+                                <div id="wide">
+                                <h5>Subject: </h5>
+                                  <div class="input-group margin-bottom-xs">
+                                      <span class="input-group-addon"><i class="fa fa-envelope-o fa-lg fa-fw"></i></span>
+                                      {{ form.subject }}
+                                  </div>
+                                </div>
+                                </div>
+                                <br>
+                                <h5>Message:</h5>
+                                  <div class="input-group margin-bottom-xs">
+                                      <span class="input-group-addon"><i class="fa fa-envelope-o fa-lg fa-fw"></i></span>
+                                      {{ form.message }}
+                                  </div>
+                                <br>
+                                <div class="form-actions" align="right">
+                                      <button type="submit" class="btn btn-success" >Send</button>
+                                </div>
+                            </section>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </form>
+{% endblock %}

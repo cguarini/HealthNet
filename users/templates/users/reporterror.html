@@ -1,0 +1,19 @@
+{% extends 'users/base.html' %}
+{% block content %}
+    <div id="content-wrapper">
+        <div id="content">
+            <div class="container">
+                <div class="12u">
+                    <section>
+                        <h3>Describe the error:</h3>
+                        <textarea class="form-control" rows="13"></textarea>
+                        <br>
+                        <div align="right">
+                            <a style="color:white"href="{% url 'reporterror' %}" class="btn btn-success">Submit</a>
+                        </div>
+                    </section>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}

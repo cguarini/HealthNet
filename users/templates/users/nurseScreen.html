@@ -1,0 +1,24 @@
+{% extends 'users/base.html' %}
+{% block content %}
+<div class="container">
+        <div class="row">
+            <div class="jumbotron">
+                <h3>
+                    Nurse Screen
+                </h3>
+                <table>
+                    <tbody>
+                    <tr>
+                        <td>
+                            <button type="button" class="btn btn-default" onclick="location.href= '{% url 'admissions' %}'">Admissions</button>
+                            <button type="button" class="btn btn-default" onclick="location.href= '#'">View Today's Calendar</button>
+                            <button type="button" class="btn btn-default" onclick="location.href= '{% url 'directory' %}'">Patient Directory</button>
+
+                        </td>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+{% endblock %}

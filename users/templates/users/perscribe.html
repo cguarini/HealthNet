@@ -1,0 +1,60 @@
+{% extends 'users/base.html' %}
+{% block content %}
+    <div id="content-wrapper">
+    <div id="content">
+     <div class="container">
+        <div class="row">
+            <div class="3u 12u(mobile)"></div>
+            <div class="5u 19u(mobile)" align="left">
+                <header>
+                    <h1>Prescriptions</h1>
+                </header>
+            </div>
+        </div>
+        <div class="row">
+            <div class = "3u 12u(mobile)">
+                <div class="list-group" align="left">
+                    <a href="{% url 'perscribe' %}" class="list-group-item" style="color:black">
+                        <i class="fa fa-plus fa-fw" aria-hidden="true"></i>&nbsp;Prescribe</a>
+                    <a href="{% url 'perscriptions' %}" class="list-group-item" style="color:black">
+                        <i class="fa fa-medkit fa-fw" aria-hidden="true"></i>&nbsp;Your Prescriptions</a>
+                    <!--<a href="{% url 'SendMessage' %}" class="btn btn-success"><p style="color:white">Compose</p></a> -->
+                </div>
+            </div>
+            <div class="6u 12u(mobile)">
+                <section>
+                <form method="post">{% csrf_token %}
+                    <h5>Patient:</h5>
+                      <div class="input-group margin-bottom-xs">
+                          <span class="input-group-addon"><i class="fa fa-user-o fa-lg fa-fw"></i></span>
+                          {{ form.patient }}
+                      </div>
+                    <h5>Prescription:</h5>
+                      <div class="input-group margin-bottom-xs">
+                          <span class="input-group-addon"><i class="fa fa-medkit fa-lg fa-fw"></i></span>
+                          {{ form.perscription }}
+                      </div>
+                    <h5>Dose:</h5>
+                      <div class="input-group margin-bottom-xs">
+                          <span class="input-group-addon"><i class="fa fa-medkit fa-lg fa-fw"></i></span>
+                          {{ form.dose }}
+                      </div>
+                    <h5>Reason:</h5>
+                      <div class="input-group margin-bottom-xs">
+                          <span class="input-group-addon"><i class="fa fa-medkit fa-lg fa-fw"></i></span>
+                          {{ form.reason }}
+                      </div>
+                    <br>
+                    <div align="right">
+                          <div class="form-actions">
+                              <button type="submit" class="btn btn-success" >Submit</button>
+                          </div>
+                      </div>
+                </form>
+                </section>
+            </div>
+        </div>
+    </div>
+    </div>
+    </div>
+{% endblock %}

@@ -1,0 +1,47 @@
+{% extends "users/base.html" %}
+{% block content %}
+<div id="content-wrapper">
+<div id="content">
+    <div class="container">
+    <header> <h1>Doctor Tools</h1></header>
+        <div class="row">
+                <table>
+                    <tbody>
+                    <tr>
+                        <td>
+                            <button type="button" class="btn btn-default" onclick="location.href= '{% url 'directory' %}'">Patient Directory</button>
+                            <button type="button" class="btn btn-default" onclick="location.href= '{% url 'addToPatients' %}'">Add Patient</button>
+                            <button type="button" class="btn btn-default" onclick="location.href= '{% url 'myTests' %}'">My Tests</button>
+                            <button type="button" class="btn btn-default" onclick="location.href= '{% url 'makeTest' %}'">Make a New Test</button>
+                            <button type="button" class="btn btn-default" onclick="location.href= '{% url 'perscriptions' %}'">Perscriptions</button>
+                            <button type="button" class="btn btn-default" onclick="location.href= '{% url 'requests' %}'">Requests</button>
+                            <button type="button" class="btn btn-default" onclick="location.href= '{% url 'admissions' %}'">Admissions</button>
+                        </td>
+                    </tr>
+                    </tbody>
+                </table>
+        </div>
+    {% if user.enduser.Patients %}
+    <h3>Your Patients:</h3>
+    <table>
+    <tbody>
+    <p style="font-size: 20px;">  Name, Username:</p>
+    {% for pat in user.enduser.Patients %}
+
+        <tr>
+        <td>
+
+            <a style="font-size: 20px;" href="{% url 'patientProfile' pat.pk %}">  {{ pat.first_name }} {{ pat.last_name }},      {{ pat.username }}</a>
+
+        </td>
+        </tr>
+    {% endfor %}
+    {% else %}
+        <h3>You have no patients at this time</h3>
+    {% endif %}
+    </tbody>
+    </table>
+    </div>
+</div>
+</div>
+{% endblock %}

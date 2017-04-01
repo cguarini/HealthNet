@@ -1,0 +1,287 @@
+{% extends 'users/base.html' %}
+{% block extraContent %}
+    <form method="post">{% csrf_token %}
+        <div id="content-wrapper">
+            <div id="content">
+                <div class="container">
+                    <header>
+                        <h1>Employee Registration</h1>
+                    </header>
+                    <div class="row">
+                        <div class="4u 12u(mobile)">
+                            <section>
+                                <h5>Username:</h5>
+                                <div class="input-group margin-bottom-xs">
+                                    <span class="input-group-addon"><i class="fa fa-user-o fa-lg fa-fw"></i></span>
+                                    {{ form.username }}
+                                </div>
+                                <div>
+                                    {% if form.username.errors %}
+                                        {% for error in form.username.errors %}
+                                            <p class="text-danger">{{ error }}</p>
+                                        {% endfor %}
+                                    {% endif %}
+                                </div>
+                                <h5>Password:</h5>
+                                <div class="input-group margin-bottom-xs">
+                                    <span class="input-group-addon"><i class="fa fa-lock fa-lg fa-fw"></i></span>
+                                    {{ form.password1 }}
+                                </div>
+                                <div>
+                                    {% if form.password1.errors %}
+                                        {% for error in form.password1.errors %}
+                                            <p class="text-danger">{{ error }}</p>
+                                        {% endfor %}
+                                    {% endif %}
+                                </div>
+                                <h5>Reenter Password:</h5>
+                                <div class="input-group margin-bottom-xs">
+                                    <span class="input-group-addon"><i class="fa fa-lock fa-lg fa-fw"></i></span>
+                                    {{ form.password2 }}
+                                </div>
+                                <div>
+                                    {% if form.password2.errors %}
+                                        {% for error in form.password2.errors %}
+                                            <p class="text-danger">{{ error }}</p>
+                                        {% endfor %}
+                                    {% endif %}
+                                </div>
+                                <h5>Email Address:</h5>
+                                <div class="input-group margin-bottom-xs">
+                                    <span class="input-group-addon"><i class="fa fa-envelope-o fa-lg fa-fw"></i></span>
+                                    {{ form.email }}
+                                </div>
+                                <div>
+                                    {% if form.email.errors %}
+                                        {% for error in form.email.errors %}
+                                            <p class="text-danger">{{ error }}</p>
+                                        {% endfor %}
+                                    {% endif %}
+                                </div>
+                                <h5>First Name:</h5>
+                                <div class="input-group margin-bottom-xs">
+                                    <span class="input-group-addon"><i
+                                            class="fa fa-user-circle-o fa-lg fa-fw"></i></span>
+                                    {{ form.first_name }}
+                                </div>
+                                <div>
+                                    {% if form.first_name.errors %}
+                                        {% for error in form.first_name.errors %}
+                                            <p class="text-danger">{{ error }}</p>
+                                        {% endfor %}
+                                    {% endif %}
+                                </div>
+                                <h5>Last Name:</h5>
+                                <div class="input-group margin-bottom-xs">
+                                    <span class="input-group-addon"><i
+                                            class="fa fa-user-circle-o fa-lg fa-fw"></i></span>
+                                    {{ form.last_name }}
+                                </div>
+                                <div>
+                                    {% if form.last_name.errors %}
+                                        {% for error in form.last_name.errors %}
+                                            <p class="text-danger">{{ error }}</p>
+                                        {% endfor %}
+                                    {% endif %}
+                                </div>
+                                <h5>Date of Birth:</h5>
+                                <div class="input-group margin-bottom-xs">
+                                    <span class="input-group-addon"><i class="fa fa-calendar fa-lg fa-fw"></i></span>
+                                    {{ form.dateOfBirth }}
+                                </div>
+                                <div>
+                                    {% if form.dateOfBirth.errors %}
+                                        {% for error in form.dateOfBirth.errors %}
+                                            <p class="text-danger">{{ error }}</p>
+                                        {% endfor %}
+                                    {% endif %}
+                                </div>
+                            </section>
+                        </div>
+                        <div class="4u 12u(mobile)">
+                            <section>
+                                <h5>Phone Number:</h5>
+                                <div class="input-group margin-bottom-xs">
+                                    <span class="input-group-addon"><i class="fa fa-phone fa-lg fa-fw"></i></span>
+                                    {{ form.PhoneNumber }}
+                                </div>
+                                <div>
+                                    {% if form.PhoneNumber.errors %}
+                                        {% for error in form.PhoneNumber.errors %}
+                                            <p class="text-danger">{{ error }}</p>
+                                        {% endfor %}
+                                    {% endif %}
+                                </div>
+                                <h5>Address:</h5>
+                                <div class="input-group margin-bottom-xs">
+                                    <span class="input-group-addon"><i class="fa fa-home fa-lg fa-fw"></i></span>
+                                    {{ form.Address }}
+                                </div>
+                                <div>
+                                    {% if form.Address.errors %}
+                                        {% for error in form.Address.errors %}
+                                            <p class="text-danger">{{ error }}</p>
+                                        {% endfor %}
+                                    {% endif %}
+                                </div>
+                                <h5>State:</h5>
+                                <div class="input-group margin-bottom-xs">
+                                    <span class="input-group-addon"><i class="fa fa-home fa-lg fa-fw"></i></span>
+                                    {{ form.State }}
+                                </div>
+                                <div>
+                                    {% if form.State.errors %}
+                                        {% for error in form.State.errors %}
+                                            <p class="text-danger">{{ error }}</p>
+                                        {% endfor %}
+                                    {% endif %}
+                                </div>
+                                <h5>City:</h5>
+                                <div class="input-group margin-bottom-xs">
+                                    <span class="input-group-addon"><i class="fa fa-home fa-lg fa-fw"></i></span>
+                                    {{ form.City }}
+                                </div>
+                                <div>
+                                    {% if form.City.errors %}
+                                        {% for error in form.City.errors %}
+                                            <p class="text-danger">{{ error }}</p>
+                                        {% endfor %}
+                                    {% endif %}
+                                </div>
+                                <h5>Zip Code:</h5>
+                                <div class="input-group margin-bottom-xs">
+                                    <span class="input-group-addon"><i class="fa fa-home fa-lg fa-fw"></i></span>
+                                    {{ form.ZipCode }}
+                                </div>
+                                <div>
+                                    {% if form.ZipCode.errors %}
+                                        {% for error in form.ZipCode.errors %}
+                                            <p class="text-danger">{{ error }}</p>
+                                        {% endfor %}
+                                    {% endif %}
+                                </div>
+                            </section>
+                        </div>
+                        <div class="4u 12u(mobile)">
+                            <section>
+                                <h5>Hospital:</h5>
+                                <div class="input-group margin-bottom-sm">
+                                    <span class="input-group-addon"><i class="fa fa-ambulance fa-fw"></i></span>
+                                    {{ form.Hospital }}
+                                </div>
+                                <div>
+                                    {% if form.Hospital.errors %}
+                                        {% for error in form.Hospital.errors %}
+                                            <p class="text-danger">{{ error }}</p>
+                                        {% endfor %}
+                                    {% endif %}
+                                </div>
+                                <div align="right">
+                                    <button type="button" class="btn btn-success" data-toggle="modal"
+                                            data-target="#hospModal">View Hospital Directory
+                                    </button>
+                                </div>
+                                <h5>Emergency Contact First Name:</h5>
+                                <div class="input-group margin-bottom-xs">
+                                    <span class="input-group-addon"><i
+                                            class="fa fa-user-circle-o fa-lg fa-fw"></i></span>
+                                    {{ form.ECFirstName }}
+                                </div>
+                                <div>
+                                    {% if form.ECFirstName.errors %}
+                                        {% for error in form.ECFirstName.errors %}
+                                            <p class="text-danger">{{ error }}</p>
+                                        {% endfor %}
+                                    {% endif %}
+                                </div>
+                                <h5>Emergency Contact Last Name:</h5>
+                                <div class="input-group margin-bottom-xs">
+                                    <span class="input-group-addon"><i
+                                            class="fa fa-user-circle-o fa-lg fa-fw"></i></span>
+                                    {{ form.ECLastName }}
+                                </div>
+                                <div>
+                                    {% if form.ECLastName.errors %}
+                                        {% for error in form.ECLastName.errors %}
+                                            <p class="text-danger">{{ error }}</p>
+                                        {% endfor %}
+                                    {% endif %}
+                                </div>
+                                <h5>Emergency Contact Phone Number:</h5>
+                                <div class="input-group margin-bottom-xs">
+                                    <span class="input-group-addon"><i class="fa fa-phone fa-lg fa-fw"></i></span>
+                                    {{ form.ECPhoneNumber }}
+                                </div>
+                                <div>
+                                    {% if form.ECPhoneNumber.errors %}
+                                        {% for error in form.ECPhoneNumber.errors %}
+                                            <p class="text-danger">{{ error }}</p>
+                                        {% endfor %}
+                                    {% endif %}
+                                </div>
+                                <h3>Occupation:</h3>
+                                <div class="panel panel-default">
+                                    <div class="panel-body">
+                                        {{ form.isSecretary }} Secretary <br>
+                                        {{ form.isNurse }} Nurse <br>
+                                        {{ form.isDoctor }} Doctor <br>
+                                        {{ form.isAdministrator }} Administrator <br>
+                                    </div>
+                                </div>
+                                <div align="right">
+                                    <div class="form-actions">
+                                        <button type="submit" class="btn btn-success">Submit</button>
+                                    </div>
+                                </div>
+                            </section>
+                        </div>
+                    </div>
+                    </br>
+                </div>
+                <p><br/></p>
+            </div>
+        </div>
+    </form>
+        <!-- Modal -->
+    <div id="hospModal" class="modal fade" role="dialog">
+        <div class="modal-dialog">
+
+            <!-- Modal content-->
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    <h4 class="modal-title">Hospitals in our network</h4>
+                </div>
+                <div class="modal-body">
+                    <div class="header">
+                        <table class="table table-striped table-hover ">
+                            <tr>
+                                <th>Hospital</th>
+                            </tr>
+                        </table>
+                    </div>
+                    <style>
+                        .body {
+                            height: 400px;
+                            overflow: auto
+                        }
+                    </style>
+                    <div class="body">
+                        <table class="table table-striped table-hover ">
+                            {% for h in Hospitals %}
+                                <tr>
+                                    <td><a style="font-size: 20px; color:black">
+                                        {{ h }} </a></td>
+                                </tr>
+                            {% endfor %}
+                        </table>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+{% endblock %}

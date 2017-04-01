@@ -1,0 +1,47 @@
+{% extends 'users/base.html' %}
+{% block extraContent %}
+    <div id="content-wrapper">
+        <div id="content">
+            <div class="container">
+                <div class="row">
+                    {% if hospitals %}
+                        <div class="12u">
+                            <div class="header">
+                                <table class="table table-striped table-hover ">
+                                    <tr>
+
+                                        <th>Hospital Name</th>
+                                        <th>Address</th>
+                                    </tr>
+                                </table>
+                            </div>
+                            <style>
+                                .body {
+                                    height: 300px;
+                                    overflow: auto
+                                }
+                            </style>
+                            <div class="body">
+                                <table class="table table-striped table-hover ">
+                                    {% for obj in hospitals %}
+                                        <tr>
+
+                                            <td><a style="font-size: 20px" href="{% url 'viewHospital' obj.pk %}">
+                                                {{ obj.Name }} </a></td>
+                                            <td><a style="font-size: 20px" href="{% url 'viewHospital' obj.pk %}">
+                                                {{ obj.Address }} </a></td>
+                                        </tr>
+                                    {% endfor %}
+                                </table>
+                            </div>
+                        </div>
+                    {% else %}
+                        <div class="8u 12u(mobile)">
+                            <h3>There are currently no hospitals added to the HealthNet network.</h3>
+                        </div>
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}

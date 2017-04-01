@@ -1,0 +1,51 @@
+{% extends 'users/base.html' %}
+{% block extraContent %}
+    <div id="content-wrapper">
+        <div id="content">
+            <div class="container">
+                <div class="row">
+                    <div class="4u 12u(mobile)"></div>
+                    <div class="4u 12u(mobile)">
+                        <section>
+                            <header>
+                                <h3>View Request</h3>
+                            </header>
+                            <h5>Doctor:</h5>
+                            <div class="input-group margin-bottom-xs">
+                                <span class="input-group-addon"><i class="fa fa-user-md fa-lg fa-fw"></i></span>
+                                <input class="form-control" id="disabledInput"
+                                       placeholder={{ r.doctor }} disabled="" type="text">
+                            </div>
+                            <h5>Patient:</h5>
+                            <div class="input-group margin-bottom-xs">
+                                <span class="input-group-addon"><i class="fa fa-user-o fa-lg fa-fw"></i></span>
+                                <input class="form-control" id="disabledInput"
+                                       placeholder={{ r.patient }} disabled="" type="text">
+                            </div>
+                            <h5>Reason:</h5>
+                            <div class="input-group margin-bottom-xs">
+                                <span class="input-group-addon"><i class="fa fa-server fa-lg fa-fw"></i></span>
+                                <textarea class="form-control" rows="4" id="textArea"
+                                          disabled="">{{ r.reason }}</textarea>
+                            </div>
+                            <br>
+                            <div class="form-group">
+                                    <a class="btn btn-success" style="color:white"
+                                       href="{% url 'acceptRequest' r.pk %}">
+                                        Accept
+                                    </a>
+                                    <a class="btn btn-danger" style="color:white"
+                                       href="{% url 'deleteRequest' r.pk %}">
+                                        Deny
+                                    </a>
+                            </div>
+                            <br>
+
+
+                        </section>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}

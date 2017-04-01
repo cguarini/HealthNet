@@ -1,0 +1,88 @@
+{% extends 'users/base.html' %}
+{% block content %}
+    <div id="content-wrapper">
+        <div id="content">
+            <div class="container">
+                <div class="row">
+                    <div class="3u 12u(mobile)"></div>
+                    <div class="5u 12u(mobile)">
+                        <header>
+                            <h1>Test</h1>
+                        </header>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="3u 12u(mobile)">
+                        <div class="list-group" align="left">
+                            <a href="{% url 'myTests' %}" class="list-group-item" style="color:black">
+                                <i class="fa fa-stethoscope fa-fw" aria-hidden="true"></i>&nbsp; My Tests</a>
+                            {% if user.enduser.isDoctor %}
+                            <a href="{% url 'makeTest' %}" class="list-group-item" style="color:black">
+                                <i class="fa fa-plus fa-fw" aria-hidden="true"></i>&nbsp; New Test</a>
+                            {% endif %}
+                        </div>
+                    </div>
+                    <div class="8u 12u(mobile)">
+                        <section>
+                            <h5>Doctor Username:</h5>
+                            <div class="input-group margin-bottom-xs">
+                                <span class="input-group-addon"><i class="fa fa-user-o fa-lg fa-fw"></i></span>
+                                <input class="form-control" id="disabledInput"
+                                       placeholder={{ test.doctor_fn }} disabled="" type="text">
+                            </div>
+                            <h5>Patient Username:</h5>
+                            <div class="input-group margin-bottom-xs">
+                                <span class="input-group-addon"><i class="fa fa-user-o fa-lg fa-fw"></i></span>
+                                <input class="form-control" id="disabledInput"
+                                       placeholder={{ test.patient_fn }} disabled="" type="text">
+                            </div>
+                            <h5>Status:</h5>
+                            {% if test.pending %}
+                                <div class="input-group margin-bottom-xs">
+                                    <span class="input-group-addon"><i class="fa fa-check fa-lg fa-fw"></i></span>
+                                    <input class="form-control" id="disabledInput" placeholder="PENDING" disabled=""
+                                           type="text">
+                                </div>
+                            {% else %}
+                                <div class="input-group margin-bottom-xs">
+                                    <span class="input-group-addon"><i class="fa fa-check fa-lg fa-fw"></i></span>
+                                    <input class="form-control" id="disabledInput" placeholder="COMPLETE" disabled=""
+                                           type="text">
+                                </div>
+                            {% endif %}
+                            <h5>Information:</h5>
+                            <div class="input-group margin-bottom-xs">
+                                <span class="input-group-addon"><i class="fa fa-info fa-lg fa-fw"></i></span>
+                                <textarea class="form-control" rows="4" id="textArea"
+                                          disabled="">{{ test.information }}</textarea>
+                            </div>
+                            <h5>Results:</h5>
+                            <div class="input-group margin-bottom-xs">
+                                <span class="input-group-addon"><i class="fa fa-list fa-lg fa-fw"></i></span>
+                                <textarea class="form-control" rows="4" id="textArea"
+                                          disabled="">{{ test.results }}</textarea>
+                            </div>
+                            <h5>File:</h5>
+                            <form>{% csrf_token %}
+                            {% if test.file %}
+                                {{ form.file }}
+                            {% else %}
+                                <h6>&nbsp;No file has been uploaded.</h6>
+                            {% endif %}
+                            </form>
+                            <br>
+                            {% if user.enduser.isDoctor %}
+                                <div align="right">
+                                    <div class="form-actions">
+                                        <a class="btn btn-success" style="color:white"
+                                           href="{% url 'editTest' test.pk %}">Update</a>
+                                    </div>
+                                </div>
+                            {% endif %}
+                        </section>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}

@@ -1,0 +1,139 @@
+{% extends 'users/base.html' %}
+{% block content %}
+    <div id="content-wrapper">
+        <div id="content">
+            <div class="container">
+                <header>
+                    <h1>Profile for {{ account.first_name }} {{ account.last_name }}</h1>
+                </header>
+                <div class="row">
+                    <div class="6u 12u(mobile)">
+                        <section>
+                            <h5>Username:</h5>
+                            <div class="input-group margin-bottom-xs">
+                                <span class="input-group-addon"><i class="fa fa-user-o fa-lg fa-fw"></i></span>
+                                <input class="form-control" id="disabledInput"
+                                       placeholder={{ account.username }} disabled="" type="text">
+                            </div>
+                            <h5>Email:</h5>
+                            <div class="input-group margin-bottom-xs">
+                                <span class="input-group-addon"><i class="fa fa-envelope-o fa-lg fa-fw"></i></span>
+                                <input class="form-control" id="disabledInput" placeholder={{ account.email }} disabled=""
+                                       type="text">
+                            </div>
+                            <h5>First Name:</h5>
+                            <div class="input-group margin-bottom-xs">
+                                <span class="input-group-addon"><i class="fa fa-user-circle-o fa-lg fa-fw"></i></span>
+                                <input class="form-control" id="disabledInput"
+                                       placeholder={{ account.first_name }} disabled="" type="text">
+                            </div>
+                            <h5>Last Name:</h5>
+                            <div class="input-group margin-bottom-xs">
+                                <span class="input-group-addon"><i class="fa fa-user-circle-o fa-lg fa-fw"></i></span>
+                                <input class="form-control" id="disabledInput"
+                                       placeholder={{ account.last_name }} disabled="" type="text">
+                            </div>
+                            <h5>Date of Birth:</h5>
+                            <div class="input-group margin-bottom-xs">
+                                <span class="input-group-addon"><i class="fa fa-calendar fa-lg fa-fw"></i></span>
+                                <input class="form-control" id="disabledInput"
+                                       placeholder={{ account.enduser.dateOfBirth }} disabled="" type="text">
+                            </div>
+                            <h5>Phone Number:</h5>
+                            <div class="input-group margin-bottom-xs">
+                                <span class="input-group-addon"><i class="fa fa-phone fa-lg fa-fw"></i></span>
+                                <input class="form-control" id="disabledInput"
+                                       placeholder={{ account.enduser.PhoneNumber }} disabled="" type="text">
+                            </div>
+                            <h5>Address:</h5>
+                            <div class="input-group margin-bottom-xs">
+                                <span class="input-group-addon"><i class="fa fa-home fa-lg fa-fw"></i></span>
+                                <input class="form-control" id="disabledInput"
+                                       placeholder={{ account.enduser.Address }} disabled="" type="text">
+                            </div>
+                            <h5>State:</h5>
+                            <div class="input-group margin-bottom-xs">
+                                <span class="input-group-addon"><i class="fa fa-home fa-lg fa-fw"></i></span>
+                                <input class="form-control" id="disabledInput"
+                                       placeholder={{ account.enduser.State }} disabled="" type="text">
+                            </div>
+                            <h5>City:</h5>
+                            <div class="input-group margin-bottom-xs">
+                                <span class="input-group-addon"><i class="fa fa-home fa-lg fa-fw"></i></span>
+                                <input class="form-control" id="disabledInput"
+                                       placeholder={{ account.enduser.City }} disabled="" type="text">
+                            </div>
+                            <h5>Zip Code:</h5>
+                            <div class="input-group margin-bottom-xs">
+                                <span class="input-group-addon"><i class="fa fa-home fa-lg fa-fw"></i></span>
+                                <input class="form-control" id="disabledInput"
+                                       placeholder={{ account.enduser.ZipCode }} disabled="" type="text">
+                            </div>
+                        </section>
+                    </div>
+                    <div class="6u 12u(mobile)">
+                        <section>
+                            <h5>Emergency Contact First Name:</h5>
+                            <div class="input-group margin-bottom-xs">
+                                <span class="input-group-addon"><i class="fa fa-user-circle-o fa-lg fa-fw"></i></span>
+                                <input class="form-control" id="disabledInput"
+                                       placeholder={{ account.enduser.ECFirstName }} disabled="" type="text">
+                            </div>
+                            <h5>Emergency Contact Last Name:</h5>
+                            <div class="input-group margin-bottom-xs">
+                                <span class="input-group-addon"><i class="fa fa-user-circle-o fa-lg fa-fw"></i></span>
+                                <input class="form-control" id="disabledInput"
+                                       placeholder={{ account.enduser.ECLastName }} disabled="" type="text">
+                            </div>
+                            <h5>Emergency Contact Phone Number:</h5>
+                            <div class="input-group margin-bottom-xs">
+                                <span class="input-group-addon"><i class="fa fa-phone fa-lg fa-fw"></i></span>
+                                <input class="form-control" id="disabledInput"
+                                       placeholder={{ account.enduser.ECPhoneNumber }} disabled="" type="text">
+                            </div>
+                            {% if account.enduser.isPatient %}
+                                <h5>Insurance Provider ID:</h5>
+                                <div class="input-group margin-bottom-xs">
+                                    <span class="input-group-addon"><i class="fa fa-ambulance fa-lg fa-fw"></i></span>
+                                    <input class="form-control" id="disabledInput"
+                                           placeholder={{ account.enduser.ProviderID }} disabled="" type="text">
+                                </div>
+                                <h5>Insurance Policy Type:</h5>
+                                <div class="input-group margin-bottom-xs">
+                                    <span class="input-group-addon"><i class="fa fa-ambulance fa-lg fa-fw"></i></span>
+                                    <input class="form-control" id="disabledInput"
+                                            {% if account.enduser.PolicyType == "" %}
+                                           placeholder="None"
+                                            {% else %}
+                                                placeholder={{ account.enduser.PolicyType }}
+                                            {% endif %} disabled="" type="text">
+                                </div>
+                                <h5>Insurance Policy Number:</h5>
+                                <div class="input-group margin-bottom-xs">
+                                    <span class="input-group-addon"><i class="fa fa-ambulance fa-lg fa-fw"></i></span>
+                                    <input class="form-control" id="disabledInput"
+                                           placeholder={{ account.enduser.PolicyNumber }} disabled="" type="text">
+                                </div>
+                                <h5>Medical Records:</h5>
+                                <div class="input-group margin-bottom-xs">
+                                    <span class="input-group-addon"><i class="fa fa-ambulance fa-lg fa-fw"></i></span>
+                                    <textarea class="form-control" rows="4" id="textArea"
+                                              disabled="">{{ account.enduser.records }}</textarea>
+                                </div>
+
+
+                            {% endif %}
+                            </br>
+                            <div align="right">
+                                <a class="btn btn-success btn-md" type="button" href='/accounts/updateMedicalInfo/{{ account.pk }}'
+                                   style="color:white">
+                                    <i class="fa fa-edit fa-fw" aria-hidden="true"></i>&nbsp;Update Medical Information
+                                </a>
+                            </div>
+                        </section>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}

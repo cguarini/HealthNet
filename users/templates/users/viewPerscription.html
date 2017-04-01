@@ -1,0 +1,42 @@
+{% extends 'users/base.html' %}
+{% block extraContent %}
+    <div id="content-wrapper">
+        <div id="content">
+            <div class="container">
+                <div class="row">
+                    <div class="4u 12u(mobile)"></div>
+                    <div class="4u 12u(mobile)">
+                        <section>
+                            {% for obj in perscriptions %}
+                                <h5>Patient:</h5>
+                                <div class="input-group margin-bottom-xs">
+                                    <span class="input-group-addon"><i class="fa fa-user-o fa-lg fa-fw"></i></span>
+                                    <input class="form-control" id="disabledInput"
+                                           placeholder={{ obj.patient }} disabled="" type="text">
+                                </div>
+                                <h5>Prescription:</h5>
+                                <div class="input-group margin-bottom-xs">
+                                    <span class="input-group-addon"><i class="fa fa-medkit fa-lg fa-fw"></i></span>
+                                    <input class="form-control" id="disabledInput"
+                                           placeholder={{ obj.perscription }} disabled="" type="text">
+                                </div>
+                                <h5>Dose:</h5>
+                                <div class="input-group margin-bottom-xs">
+                                    <span class="input-group-addon"><i class="fa fa-medkit fa-lg fa-fw"></i></span>
+                                    <input class="form-control" id="disabledInput"
+                                           placeholder={{ obj.dose }} disabled="" type="text">
+                                </div>
+                                <h5>Reason:</h5>
+                                <div class="input-group margin-bottom-xs">
+                                    <span class="input-group-addon"><i class="fa fa-medkit fa-lg fa-fw"></i></span>
+                                    <input class="form-control" id="disabledInput"
+                                           placeholder={{ obj.reason }} disabled="" type="text">
+                                </div>
+                            {% endfor %}
+                        </section>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}

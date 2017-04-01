@@ -1,0 +1,25 @@
+{% extends 'users/admissions.html' %}
+{% block extraContent %}
+    <div class="container">
+        <div class="row">
+            <div class="jumbotron">
+    <table>
+    <tbody>
+    <p style="font-size: 20px;">  Username, Name: Reason for Admission</p>
+    {% for pospat in patients %}
+        <tr>
+        <td>
+
+            <a style="font-size: 20px;" href="{% url 'patientProfile' pospat.pk %}"> {{ pospat.enduser.aTime }} {{ pospat.username }},
+                {{ pospat.first_name }} {{ pospat.last_name }}: {{ pospat.enduser.aReason }}</a>
+
+
+        </td>
+        </tr>
+    {% endfor %}
+    </tbody>
+    </table>
+            </div>
+        </div>
+    </div>
+{% endblock %}

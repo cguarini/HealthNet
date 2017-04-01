@@ -1,0 +1,33 @@
+
+{% extends 'users/base.html' %}
+{% load index %}
+{% block content %}
+    <div id="content wrapper">
+        <div id="content">
+            <div class="container">
+                <div class="row">
+                    <div class="12u" align="center">
+                        <style>
+                            .body {
+                                height: 450px;
+                                overflow: auto
+                            }
+                        </style>
+                        <div class="body">
+                            <table>
+
+                                {% for i in counter %}
+                                    <tr>
+                                        <td><p style="font-size: 20px">
+                                            {{ descriptions|index:i }} {{ statistics|index:i }} </p></td>
+                                    </tr>
+
+                                {% endfor %}
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}
