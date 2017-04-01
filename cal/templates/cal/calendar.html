@@ -1,0 +1,28 @@
+{% extends "../../users/templates/users/base.html" %}
+
+{% block content %}
+
+<table width="100%">
+    <thead>
+    <tr>
+        <th>#</th>
+        <th>Time</th>
+        <th>Doctor</th>
+        <th>Patient</th>
+        <th>Length</th>
+    </tr>
+    </thead>
+    <tbody>
+    {% for obj in object_list %}
+        <tr>
+            <th>{{ forloop.counter }}</th>
+            <td>{{ obj.begins|date:"d/m/Y" }}</td>
+            <td>{{ obj.doctor_name }} </td>
+            <td>{{ obj.patient_name}}</td>
+            <td>{{ obj.length}}</td>
+        </tr>
+    {% endfor %}
+    </tbody>
+</table>
+
+{% endblock %}

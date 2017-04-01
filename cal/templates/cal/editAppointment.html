@@ -1,0 +1,63 @@
+{% extends "../../users/templates/users/base.html" %}
+
+{% block content %}
+    <div id="content-wrapper">
+        <div id="content">
+            <div class="container">
+                <div class="row">
+                    <div class="4u 12u(mobile)"></div>
+                    <div class="4u 12u(mobile)">
+                        <section>
+                            <div align="center">
+                                <header>
+                                    <h3> {{ appointment.begins|date:"l, M Y" }} Appointment </h3>
+                                </header>
+                            </div>
+                            <h5>Doctor:</h5>
+                            <div class="input-group margin-bottom-xs">
+                                <span class="input-group-addon"><i class="fa fa-user-md fa-lg fa-fw"></i></span>
+                                <input class="form-control" id="disabledInput"
+                                       placeholder="{{ doctor.user.first_name }} {{ doctor.user.last_name }}, &nbsp;{{ doctor.user.username }}"
+                                       disabled="" type="text">
+                            </div>
+                            <h5>Patient:</h5>
+                            <div class="input-group margin-bottom-xs">
+                                <span class="input-group-addon"><i class="fa fa-user-o fa-lg fa-fw"></i></span>
+                                <input class="form-control" id="disabledInput"
+                                       placeholder="{{ patient.user.first_name }} {{ patient.user.last_name }}, &nbsp;{{ patient.user.username }}"
+                                       disabled="" type="text">
+                            </div>
+
+                            {% if user.enduser.isPatient %}
+                                <p>patients cannot directly edit appointments, they must request changes from the
+                                    hospital.</p>
+                                <p>patients can cancel their own appointments, however.</p>
+                                <p><a href="/cal/confirmation/{{ appointment.id }}">cancel appointment</a></p>
+
+                            {% elif user.enduser.isNurse %}
+                                <h2>Enter new appointment information</h2>
+                                <form method="POST" action="" class="">
+                                    {% csrf_token %}
+                                    {{ form.as_p }}
+                                    <button type="submit">Save</button>
+                                </form>
+
+                            {% else %}
+                                <h2>Enter new appointment information</h2>
+                                <form method="POST" action="" class="">
+                                    {% csrf_token %}
+                                    {{ form.as_p }}
+                                    <button class = "btn btn-success" type="submit">Save</button>
+                                </form>
+
+                                <p><br> <a class="btn btn-danger" style="color:white"
+                                           href="/appointments/{{ appointment.id }}"> Discard
+                                    Changes </a></p>
+                            {% endif %}
+                        </section>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}

@@ -1,0 +1,89 @@
+{% extends "../../users/templates/users/base.html" %}
+
+{% block content %}
+
+
+
+    <div id="content-wrapper">
+          <div id ="content">
+              <div class = "container", align="center">
+              <section>
+
+              <ul class="pager">
+                <li><a href="/cal/{{lastMonth.month}}/{{lastMonth.year}}" style="color:white">&larr; {{lastMonth.month}}/{{lastMonth.year}} </a></li>
+
+                <li><a href="/cal/{{nextMonth.month}}/{{nextMonth.year}}" style="color:white"> {{nextMonth.month}}/{{nextMonth.year}} &rarr;</a></li>
+              </ul>
+ <h1> {{sampleDay|date:"M Y"}} Calendar</h1>
+
+
+
+<table align="center" class = "table table-striped">
+    <col width="12%">
+<col width="12%">
+<col width="12%">
+<col width="12%">
+<col width="12%">
+<col width="12%">
+<col width="12%">
+    <thead>
+    <tr>
+        <th>Sunday</th>
+        <th>Monday</th>
+        <th>Tuesday</th>
+        <th>Wednesday</th>
+        <th>Thursday</th>
+        <th>Friday</th>
+        <th>Saturday</th>
+    </tr>
+    </thead>
+    <tbody>
+    {% for day in day_appointments_list %}
+        {% if day.day in sunday_list %}
+            <tr>
+                <td>
+                <br>
+                <div class="panel panel-info">
+                    <div class="panel-heading"><a href="/cal/{{day.day.day}}/{{day.day.month}}/{{day.day.year}}" style="color:black">{{ day.day.day}}</a></div>
+                    <div class="panel-body">
+                    {% for appointment in day.appointments %}
+                <p style="color:black"><a style="color:black" href="/appointments/{{appointment.id}}">{{appointment.begins|date:"g:i a"}}</a>
+                {% endfor %}
+                    </p>
+                    </div>
+                    </div>
+                </td>
+        {% else %}
+            <td>
+            <br>
+            <div class="panel panel-info">
+                    <div class="panel-heading"><a href="/cal/{{day.day.day}}/{{day.day.month}}/{{day.day.year}}" style="color:black">{{ day.day.day}}</a></div>
+                    <div class="panel-body">
+                    {% for appointment in day.appointments %}
+                <p style="color:black"><a style="color:black" href="/appointments/{{appointment.id}}">{{appointment.begins|date:"g:i a"}}</a>
+                {% endfor %}
+                    </p>
+                    </div>
+                    </div>
+            </td>
+        {% endif %}
+
+                {%if day.day in saturday_list %}
+                </tr>
+        {% endif %}
+    {% endfor %}
+    </tbody>
+</table>
+                  {% if not user.enduser.isPatient %}
+              <div align="right"><p><a style="color:white" class = "btn btn-success" href="http://127.0.0.1:8000/cal/makeAppointment">
+                  <i class="fa fa-plus-square fa-fw" aria-hidden="true"></i>&nbsp;Add a new appointment</a></p></div>
+                  {% endif %}
+
+              </section>
+              </div>
+          </div>
+    </div>
+
+
+
+{% endblock %}

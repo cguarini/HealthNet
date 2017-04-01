@@ -1,0 +1,68 @@
+{% extends "../../users/templates/users/base.html" %}
+
+{% block content %}
+
+
+
+    <div id="content-wrapper">
+          <div id ="content">
+              <div class = "container", align="center">
+              <section>
+
+ <h1>The Week Ahead</h1>
+
+
+
+<table align="center" class = "table table-striped">
+    <col width="12%">
+<col width="12%">
+<col width="12%">
+<col width="12%">
+<col width="12%">
+<col width="12%">
+<col width="12%">
+    <thead>
+    <tr>
+        <th>{{thisWeek.0|date:'D m/d'}}</th>
+        <th>{{thisWeek.1|date:'D m/d'}}</th>
+        <th>{{thisWeek.2|date:'D m/d'}}</th>
+        <th>{{thisWeek.3|date:'D m/d'}}</th>
+        <th>{{thisWeek.4|date:'D m/d'}}</th>
+        <th>{{thisWeek.5|date:'D m/d'}}</th>
+        <th>{{thisWeek.6|date:'D m/d'}}</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr>
+    {% for day in thisWeek %}
+
+            <td>
+            <div class="panel panel-info">
+                    <div class="panel-heading"><a href="/cal/{{day.day}}/{{day.month}}/{{day.year}}" style="color:black">{{ day.day}}</a></div>
+                    <div class="panel-body">
+            {% for appointment in name_list %}
+                {% if appointment.0.day == day.day %}
+                        <p>
+                    <a style="color:black" href="/appointments/{{appointment.0.id}}">{{appointment.1}} {{appointment.0.begins|date:"g:i a"}}</a>
+                            </p>
+                {%endif%}
+            {% endfor %}
+                        </div>
+                </div>
+            </td>
+    {% endfor %}
+    </tr>
+
+    </tbody>
+</table>
+              <div align="right"><p><a style="color:white" class = "btn btn-success" href="http://127.0.0.1:8000/cal/makeAppointment">
+                  <i class="fa fa-plus-square fa-fw" aria-hidden="true"></i>&nbsp;Add a new appointment</a></p></div>
+
+              </section>
+              </div>
+          </div>
+    </div>
+
+
+
+{% endblock %}

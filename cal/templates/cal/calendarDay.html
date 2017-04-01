@@ -1,0 +1,51 @@
+{% extends "../../users/templates/users/base.html" %}
+
+{% block content %}
+    <div id="content-wrapper">
+        <div id ="content">
+            <div class = "container">
+                <h1>Appointments for {{date.0}}/{{date.1}}/{{date.2}}</h1>
+                {% if object_list %}
+                    <section>
+                        <table  class="table table-striped">
+                            <thead>
+                            <tr>
+                                <th>Time</th>
+                                <th>DoctorID</th>
+                                <th>PatientID</th>
+                                <th>Length</th>
+                                <th>Location</th>
+                                <th></th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            {% for obj in object_list %}
+                                <tr>
+                                    <td>{{ obj.begins|date:"g:i a" }}</td>
+                                    <td>{{ obj.doctorID }} </td>
+                                    <td>{{ obj.patientID}} </td>
+                                    <td>{{ obj.length}}</td>
+                                    <td>{{ obj.location}}</td>
+                                    {% if user.enduser.isPatient %}
+                                    <td><a href='/appointments/{{obj.id}}'> view or cancel the appointment here </a></td>
+                                    {% elif user.enduser.isNurse %}
+                                    <td><a href='/appointments/{{obj.id}}'> view or edit the appointment here </a></td>
+                                    {% else %}
+                                    <td><a href='/appointments/{{obj.id}}'> view, edit, or cancel the appointment here </a></td>
+                                    {% endif %}
+                                </tr>
+                            {% endfor %}
+                            </tbody>
+                        </table>
+                    </section>
+                {% else %}
+                    <h3>There are no appointments for {{date.0}}/{{date.1}}/{{date.2}}</h3>
+                {% endif %}
+                {% if not user.enduser.isPatient %}
+                <a href="http://127.0.0.1:8000/cal/makeAppointment" class="btn btn-success" style="color:white">
+                    <i class="fa fa-plus-square fa-fw" aria-hidden="true"></i>&nbsp;Add a new appointment</a>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+{% endblock %}

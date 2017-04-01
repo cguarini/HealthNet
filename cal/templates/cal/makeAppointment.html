@@ -1,0 +1,140 @@
+{% extends "users/base.html" %}
+{% block content %}
+    <div id="content-wrapper">
+        <div id ="content">
+            <div class = "container">
+                <header>
+                    <h1>Make Appointment</h1>
+                </header>
+                <div class="row">
+                    <div class="4u 12u(mobile)">
+                        <section>
+                            <div style="padding: 10px;">
+                                <h3>Doctor IDs</h3>
+                                <table width="50%">
+                                    <thead>
+                                        <tr>
+                                            <th>ID:</th>
+                                            <th>Doctor</th>
+                                            <th>Username</th>
+                                        </tr>
+                                    </thead>
+                                </table>
+                                <select multiple="" class="form-control">
+                                    {% for doc in doctors %}
+                                        <option>{{ doc.id }} : {{ doc.user.last_name }}, {{ doc.user.first_name }} - {{ doc.user.username }}</option>
+                                    {% endfor %}
+                                </select>
+                                <h3>Patient IDs</h3>
+                                <table width="50%">
+                                    <thead>
+                                        <tr>
+                                            <th>ID:</th>
+                                            <th>Name</th>
+                                            <th>Username</th>
+                                        </tr>
+                                    </thead>
+                                </table>
+                                <select multiple="" class="form-control">
+                                    {% for pat in patients %}
+                                        <option>{{ pat.id }} : {{ pat.user.last_name }}, {{ pat.user.first_name }} - {{ pat.user.username }}</option>
+                                    {% endfor %}
+                                </select>
+                            </div>
+                        </section>
+                    </div>
+                    <div class="8u 12u(mobile)">
+                        <section>
+                            <form method="POST" action="" class="" >{% csrf_token %}
+                                <h5>Appointment Length:</h5>
+                                <div class="input-group margin-bottom-xs">
+                                    <span class="input-group-addon"><i class="fa fa-clock-o fa-lg fa-fw"></i></span>
+                                    {{ form.length }}
+                                </div>
+                                <div>
+                                    {% if form.length.errors %}
+                                        {% for error in form.length.errors %}
+                                            <p class="text-danger">{{ error }}</p>
+                                        {% endfor %}
+                                    {% endif %}
+                                </div>
+
+                                <h5>Location:</h5>
+                                <div class="input-group margin-bottom-xs">
+                                    <span class="input-group-addon"><i class="fa fa-hospital-o fa-lg fa-fw"></i></span>
+                                    {{ form.location }}
+                                </div>
+                                <div>
+                                    {% if form.location.errors %}
+                                        {% for error in form.location.errors %}
+                                            <p class="text-danger">{{ error }}</p>
+                                        {% endfor %}
+                                    {% endif %}
+                                </div>
+
+                                <h5>Date of Appointment:</h5>
+                                <div class="input-group margin-bottom-xs">
+                                    <span class="input-group-addon"><i class="fa fa-calendar fa-lg fa-fw"></i></span>
+                                    {{ form.date }}
+                                </div>
+                                <div>
+                                    {% if form.date.errors %}
+                                        {% for error in form.date.errors %}
+                                            <p class="text-danger">{{ error }}</p>
+                                        {% endfor %}
+                                    {% endif %}
+                                </div>
+
+                                <h5>Appointment Start (24hr):</h5>
+                                <div class="input-group margin-bottom-xs">
+                                    <span class="input-group-addon"><i class="fa fa-clock-o fa-lg fa-fw"></i></span>
+                                    {{ form.begins }}
+                                </div>
+                                <div>
+                                    {% if form.begins.errors %}
+                                        {% for error in form.begins.errors %}
+                                            <p class="text-danger">{{ error }}</p>
+                                        {% endfor %}
+                                    {% endif %}
+                                </div>
+
+                                <h5>Doctor ID:</h5>
+                                <div class="input-group margin-bottom-xs">
+                                    <span class="input-group-addon"><i class="fa fa-user-circle-o fa-lg fa-fw"></i></span>
+                                    {{ form.doctorID }}
+                                </div>
+                                <div>
+                                    {% if form.doctorID.errors %}
+                                        {% for error in form.doctorID.errors %}
+                                            <p class="text-danger">{{ error }}</p>
+                                        {% endfor %}
+                                    {% endif %}
+                                </div>
+
+                                <h5>Patient ID:</h5>
+                                <div class="input-group margin-bottom-xs">
+                                    <span class="input-group-addon"><i class="fa fa-user-circle-o fa-lg fa-fw"></i></span>
+                                    {{ form.patientID }}
+                                </div>
+                                <div>
+                                    {% if form.patientID.errors %}
+                                        {% for error in form.patientID.errors %}
+                                            <p class="text-danger">{{ error }}</p>
+                                        {% endfor %}
+                                    {% endif %}
+                                </div>
+                                <br>
+                                <div align="right">
+                                    <div class="form-actions">
+                                        <button type="submit" class="btn btn-success">Create</button>
+                                    </div>
+                                </div>
+                            </form>
+                        </section>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}
